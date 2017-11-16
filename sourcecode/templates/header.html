@@ -1,30 +1,66 @@
-<!DOCTYPE html>
+
 <html>
- <head>
- </head>
- <body>
- <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-   <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-     <span class="sr-only">Toggle navigation </span>
-     <span class="icon-bar"></span>
-     <span class="icon-bar"></span>
-     <span class="icon-bar"></span>
-    </button>
-    <a class="navbar-brand" href="#">Trello API </a>
-   </div>
-   <div id="navbar" class="collapse navbar-collapse">
-   <ul class="nav navbar-nav">
-    <li class="active"><a href="#">Home </a></li>
-    <li><a href="#about">About </a></li>
-    <li><a href="#contact">Contact </a></li>
-   </ul>
-   </div>
-  </div>
- </nav>
+<head>
+    <link href="/static/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/trello.css" rel="stylesheet" media="screen" />
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://api.trello.com/1/client.js?key=eaf8c57e2e802c6e08c08132d4433d4e"></script>
+    <script src="/static/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script src="/static/js/trello.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css"/>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"> </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
- {% block content %} {% endblock %}
 
- </body>
+</head>
+
+  <body>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">Trello API Based Website</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="filter?status=developing">Sub1</a></li>
+              <li><a href="filter?status=completed">Sub2</a></li>
+              <li><a href="filter?status=demo">Sub3</a></li>
+            </ul>
+          </li>
+          <li><a href="/cards">List/Cards</a></li>
+
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+            <li><button id="loggedin" class="btn btn-danger navbar-btn">Connect Using Trello</button></li>
+
+             <li><div id="loggedout" ><span id="welcome">Welcome</span><button class="btn btn-danger navbar-btn" > Log Out</button></div></li>
+
+
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+{% block content %} {% endblock %}
+
+
+  </body>
+
+
+
 </html>
+
