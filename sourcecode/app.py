@@ -8,10 +8,9 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-@app.route('/design/')
-def home():
+@app.route('/design')
+def design():
     return render_template('home2.html')
-
 
 @app.errorhandler(404)
 def page_not_found(error):
