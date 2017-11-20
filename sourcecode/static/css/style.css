@@ -875,7 +875,7 @@ body .center .outer_four__piece:nth-of-type(36), body .center .outer_five__piece
   -webkit-transform: rotateZ(-36deg);
           transform: rotateZ(-36deg);
 }
-@font-face { font-family: Blanka; src: url('/static/fonts/Blanka-Regular'); } 
+@font-face { font-family: Blanka; src: url('/static/font/Blanka-Regular'); } 
 body {
   height: 100vh;
   -webkit-animation: intro_box 1s 1s forwards;
