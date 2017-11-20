@@ -17,9 +17,13 @@ $(document).ready(function() {
     console.log('Failed to load action');
  };
 
+ var listLoadFailure = function() {
+    console.log('Failed to load list');
+ };
+
   var authenticationSuccess = function() {
     updateLoggedIn();
-    console.log('Successful authentication');
+
     var token = Trello.token();
     Trello.members.get("me", function(member){
          var welcometxt="Welcome "+member.fullName+"  ";
@@ -32,7 +36,7 @@ $(document).ready(function() {
 
   var updateLoggedIn = function() {
       var isLoggedIn = Trello.authorized();
-      console.log(isLoggedIn);
+
       $("#loggedin").toggle(!isLoggedIn);
       $("#loggedout").toggle(isLoggedIn);
   };
@@ -102,15 +106,17 @@ $(document).ready(function() {
   };
 
   var loadedCards= function(cards) {
-  var table= $("<table id='cardsoractionstable' class='table table-striped table-bordered'></table>");
-  var header=$("<tr><th>Card Name</th><th>Card Description</th><th>Date of Last Activity</th><th>Due Date</th><th>Marked Completed ?</th><th>Closed ?</th></tr>");
-  header.appendTo(table);
+    var table= $("<table class='table table-bordered'></table>");
+    var header=$("<tr><th>Card Name</th><th>Card Description</th><th>Date of Last Activity</th><th>Due Date</th><th>Marked Completed ?</th><th>Closed ?</th><th>List Name</th></tr>");
+    header.appendTo(table);
     $.each(cards, function(index, card) {
+
       $('#cardsoractions').toggle(true);
       var boardId = $( "select#boards option:checked" ).val();
       //only add cards that belong to the currently selected board
       var dueComplete;
       var closed;
+      var due;
 
       if(card.dueComplte==true){
         dueComplete="Yes";
@@ -124,33 +130,58 @@ $(document).ready(function() {
         closed="No";
       }
 
+      if(card.due==null){
+        due="Not Set";
+      }else{
+        due=card.due;
+      }
+
       if(boardId==card.idBoard){
-        var tabledata=$("<tr><td class='bg-primary';>"+card.name+"</td><td class='bg-warning' >"+card.desc+"</td><td class='bg-danger' >"+card.dateLastActivity+"</td><td class='bg-info' >"+card.due+"</td><td class='bg-success' >"+dueComplete+"</td><td class='bg-warning'>"+closed+"</td></tr>");
-        tabledata.appendTo(table);
-        console.log($('#cardsoractionstable').html());
+        idList=card.idList;
+        //get the list the card belongs to
+        Trello.get(
+          '/list/'+idList,
+          function(list) {
+            var tabledata=$("<tr><td class='bg-primary'>"+card.name+"</td><td class='bg-warning' >"+card.desc+"</td><td class='bg-danger' >"+card.dateLastActivity+"</td><td class='bg-info' >"+due+"</td><td class='bg-success' >"+dueComplete+"</td><td class='bg-warning'>"+closed+"</td><td class='bg-primary'>"+list.name+"</td></tr>");
+            tabledata.appendTo(table);
+          },listLoadFailure
+        );
+
       }
 
     });
 
-
     table.appendTo($('#cardsoractions'));
-    console.log($('#cardsoractions').html());
+
   };
 
   var loadedActions= function(actions) {
+    var table= $("<table class='table table-bordered'></table>");
+    var header=$("<tr><th>Action Type</th><th>Action Date</th><th>Card Name</th><th>List Name</th></tr>");
+    header.appendTo(table);
     $.each(actions, function(index, action) {
       var boardId = $( "select#boards option:checked" ).val();
       //only add cards that belong to the currently selected board
-      console.log(action.data.board);
-      console.log(action.data);
-      console.log(action);
-      if(typeof action.data.board.id !== 'undefined' && boardId==action.data.board.id){
-        var action = $("<p><span class='badge' style='background:red';>" + action.type+ "</span> " + action.date+ "</p>");
-        $('#cardsoractions').append(action);
+      if(typeof action.data.board!== 'undefined' && boardId==action.data.board.id){
+        var whichcard;
+        var whichlist;
+        if(typeof action.data.card!=='undefined'){
+          whichcard=action.data.card.name;
+        }else{
+          whichcard="Not Applicable";
+        }
+
+        if(typeof action.data.list!=='undefined'){
+          whichlist=action.data.list.name;
+        }else{
+          whichlist="Not Applicable";
+        }
+        var tabledata=$("<tr><td class='bg-primary' >"+action.type+"</td><td class='bg-warning'>"+action.date+"</td><td class='bg-danger' >"+whichcard+"</td><td class='bg-info' >"+whichlist+"</td></tr>");
+        tabledata.appendTo(table);
       }
 
     });
-      $('#cardsoractions').toggle(true);
+    table.appendTo($('#cardsoractions'));
   };
 
   //attempt to authenticate when page is refreshed

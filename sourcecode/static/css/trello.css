@@ -4,4 +4,10 @@
 #actiontypegroup{ display: none;}
 #boardsgroup{ display: none;}
 #welcome{color:white}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding:0.5em;
+    font-family:"Verdana",cursive,serif;
+}
 
