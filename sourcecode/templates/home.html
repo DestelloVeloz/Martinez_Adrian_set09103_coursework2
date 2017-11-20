@@ -3,25 +3,27 @@
 <div class="container">
 
 
-         <div id="custom-search-input">
 
-                            <form action="" method=post>
+  <h1>Welcome to the Trello API Based DashBoard</h1>
+  <p>This webpage displays your trello cards assigned to you and actions you have made on a shared board you are part of so that you do not need to go through massive number of cards inside those boards. It also makes it possible to download your cards and actions</p>
 
-                              <div class="input-group">
-                                  <input type="text" name="search" class="search-query form-control" placeholder="Search" />
-                                 <div class="input-group-btn">
-                                    <button class="btn btn-danger" type="submit">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </div>
-                              </div>
-                            </form>
+
+      <form class="form-horizontal" id="boards_form">
+        <div id="boardsgroup" class="form-group">
+          <label class="control-label">Choose your board</label>
+            <select class="form-control" id="boards"></select>
+        </div>
+
+        <div id="actiontypegroup" class="form-group">
+          <label class="control-label">Choose what you want</label>
+            <select class="form-control" id="actiontype"></select>
+        </div>
+      </form>
+
+      <div class="table-responsive" id="cardsoractions">
+                  
       </div>
 
-
-  <h3>Welcome to the Trello API Based Website</h3>
-  <p>This website is to represent trello data in a decent format ...
-  <p>More info here....</p>
 
 </div>
 

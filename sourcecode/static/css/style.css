@@ -875,21 +875,7 @@ body .center .outer_four__piece:nth-of-type(36), body .center .outer_five__piece
   -webkit-transform: rotateZ(-36deg);
           transform: rotateZ(-36deg);
 }
-@font-face { font-family: Blanka; src: url('/static/font/Blanka-Regular'); } 
-body {
-  height: 100vh;
-  -webkit-animation: intro_box 1s 1s forwards;
-          animation: intro_box 1s 1s forwards;
-  opacity: 0;
-  -webkit-perspective-origin: 50% -10%;
-          perspective-origin: 50% -10%;
-  font-family: montserrat;
-  -webkit-perspective: 800;
-          perspective: 800;
-  background: -webkit-radial-gradient(top left ellipse, rgba(222, 11, 70, 0.26) -160%, rgba(255, 255, 255, 0) 103%), -webkit-radial-gradient(center, ellipse cover, #0C1019 0%, #0B0B0E 100%);
-  background: radial-gradient(ellipse at top left, rgba(222, 11, 70, 0.26) -160%, rgba(255, 255, 255, 0) 103%), -webkit-radial-gradient(center, ellipse cover, #0C1019 0%, #0B0B0E 100%);
-  overflow: hidden;
-}
+@font-face { font-family: Blanka; src: url('../static/font/Blanka-Regular.otf'); } 
 body .grain {
   -webkit-transform: scale(1) !important;
           transform: scale(1) !important;
