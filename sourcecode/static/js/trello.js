@@ -152,6 +152,7 @@ $(document).ready(function() {
     });
 
     table.appendTo($('#cardsoractions'));
+    $("<button class='btn btn-warning' onclick=\"exportTableToCSV('cards.csv')\">Export To CSV File</button>").appendTo($('#cardsoractions'));
 
   };
 
@@ -182,6 +183,7 @@ $(document).ready(function() {
 
     });
     table.appendTo($('#cardsoractions'));
+    $("<button class='btn btn-warning' onclick=\"exportTableToCSV('actions.csv')\">Export To CSV File</button>").appendTo($('#cardsoractions'));
   };
 
   //attempt to authenticate when page is refreshed
