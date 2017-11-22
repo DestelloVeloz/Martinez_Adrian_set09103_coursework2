@@ -195,6 +195,7 @@ $(document).ready(function() {
 
   //login in
   $("#loggedin").click(function(){
+    $(".intro").hide();
     Trello.authorize({
       type: 'popup',
       name: 'Trello Web Api Application',
@@ -206,8 +207,25 @@ $(document).ready(function() {
       error: authenticationFailure
     });
   });
+
+  //login in
+  $("#loggedin2").click(function(){
+    $(".intro").hide();
+    Trello.authorize({
+      type: 'popup',
+      name: 'Trello Web Api Application',
+      scope: {
+      read: 'true',
+      write: 'true' },
+      expiration: 'never',
+      success: authenticationSuccess,
+      error: authenticationFailure
+    });
+  });
+
   //login out
     $("#loggedout").click(function(){
+      $(".intro").show();
       Trello.deauthorize();
       updateLoggedIn()
       window.location.replace("/");
