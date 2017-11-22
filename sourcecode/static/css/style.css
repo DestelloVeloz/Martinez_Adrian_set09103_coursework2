@@ -1,19 +1,24 @@
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  z-index: 999;
+}
+p {
+  font-family: 'Orbitron', sans-serif;
+  z-index: 999;
+}
 body {
   padding: 0;
   margin: 0;
   color: #fff;
-  height: 100vh;
   -webkit-animation: intro_box 1s 1s forwards;
           animation: intro_box 1s 1s forwards;
   opacity: 0;
   -webkit-perspective-origin: 50% -10%;
           perspective-origin: 50% -10%;
-  font-family: Blanka;
   -webkit-perspective: 800;
           perspective: 800;
   background: -webkit-radial-gradient(top left ellipse, rgba(222, 11, 70, 0.26) -160%, rgba(255, 255, 255, 0) 103%), -webkit-radial-gradient(center, ellipse cover, #0C1019 0%, #0B0B0E 100%);
   background: radial-gradient(ellipse at top left, rgba(222, 11, 70, 0.26) -160%, rgba(255, 255, 255, 0) 103%), -webkit-radial-gradient(center, ellipse cover, #0C1019 0%, #0B0B0E 100%);
-  overflow: hidden;
 }
 body * {
   box-sizing: border-box;
@@ -21,7 +26,7 @@ body * {
 body .center {
   left: 0;
   right: 0;
-  top: 50%;
+  top: 70%;
   position: absolute;
   margin: auto;
   -webkit-transform: translateY(-50%);
@@ -874,8 +879,7 @@ body .center .outer_four__piece:nth-of-type(36), body .center .outer_five__piece
   border-radius: 2px;
   -webkit-transform: rotateZ(-36deg);
           transform: rotateZ(-36deg);
-}
-@font-face { font-family: Blanka; src: url('../static/font/Blanka-Regular.otf'); } 
+} 
 body .grain {
   -webkit-transform: scale(1) !important;
           transform: scale(1) !important;
